@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculators — Dirt &amp; Diamonds</title>
+<meta name="description" content="Growtopia calculators: farming profit, Gems/World Lock/Diamond Lock converter, and flip profit-per-hour.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="block-icon" aria-hidden="true"></span>
+      <span class="brand-name">DIRT &amp; DIAMONDS<span>Growtopia Profit Hub</span></span>
+    </a>
+    <nav class="main-nav" aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="calculators.html" aria-current="page">Calculators</a></li>
+        <li><a href="profit-methods.html">Profit Methods</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" style="padding-bottom:36px;">
+  <div class="wrap">
+    <span class="hero-tag">Calculators</span>
+    <h1>Do the math<br>before you plant.</h1>
+    <p class="lead">
+      Every field below is yours to fill in — grow times, yields and
+      prices move constantly between worlds, so nothing here is
+      pre-filled with assumptions about the current economy.
+    </p>
+  </div>
+</section>
+
+<div class="block-divider" aria-hidden="true"></div>
+
+<section class="section">
+  <div class="wrap">
+
+    <div class="signboard" id="farming">
+      <h2>Farming profit calculator</h2>
+      <p class="signboard-note">
+        Work out what a batch of seeds actually earns once grow time is
+        factored in — useful for comparing two seeds that cost different
+        amounts but grow at different speeds.
+      </p>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="f-seed-cost">Cost per seed (World Locks)</label>
+          <input type="number" id="f-seed-cost" min="0" step="0.01" value="2">
+        </div>
+        <div class="field">
+          <label for="f-seed-count">Seeds planted</label>
+          <input type="number" id="f-seed-count" min="0" step="1" value="20">
+        </div>
+        <div class="field">
+          <label for="f-grow-time">Grow time (hours)</label>
+          <span class="hint">Time for one full cycle</span>
+          <input type="number" id="f-grow-time" min="0.01" step="0.1" value="8">
+        </div>
+        <div class="field">
+          <label for="f-yield">Yield per plant (items)</label>
+          <input type="number" id="f-yield" min="0" step="1" value="6">
+        </div>
+        <div class="field">
+          <label for="f-price">Sell price per item (World Locks)</label>
+          <input type="number" id="f-price" min="0" step="0.01" value="1">
+        </div>
+      </div>
+
+      <div class="result-row">
+        <div class="result-tile">
+          <span class="value" id="f-out-revenue">0</span>
+          <span class="label">Total revenue</span>
+        </div>
+        <div class="result-tile">
+          <span class="value" id="f-out-cost">0</span>
+          <span class="label">Total seed cost</span>
+        </div>
+        <div class="result-tile" id="f-out-profit-tile">
+          <span class="value" id="f-out-profit">0</span>
+          <span class="label">Profit per harvest</span>
+        </div>
+        <div class="result-tile" id="f-out-per-hour-tile">
+          <span class="value" id="f-out-per-hour">0</span>
+          <span class="label">Profit per hour</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="signboard" id="converter">
+      <h2>Gems · World Locks · Diamond Locks</h2>
+      <p class="signboard-note">
+        100 World Locks always equals 1 Diamond Lock. The Gems-per-World-Lock
+        rate fluctuates with the in-game exchange, so set it to whatever
+        the Gems to WL machine shows you right now.
+      </p>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="c-rate">Gems per World Lock</label>
+          <span class="hint">Check the in-game rate</span>
+          <input type="number" id="c-rate" min="1" step="1" value="2100">
+        </div>
+        <div class="field">
+          <label for="c-gems">Gems</label>
+          <input type="number" id="c-gems" min="0" step="1">
+        </div>
+        <div class="field">
+          <label for="c-wl">World Locks</label>
+          <input type="number" id="c-wl" min="0" step="0.01" value="1">
+        </div>
+        <div class="field">
+          <label for="c-dl">Diamond Locks</label>
+          <input type="number" id="c-dl" min="0" step="0.0001">
+        </div>
+      </div>
+      <p class="signboard-note" style="margin-bottom:0;">
+        Type into any of the three fields — the other two update to match.
+      </p>
+    </div>
+
+    <div class="signboard" id="flipping">
+      <h2>Flip profit-per-hour</h2>
+      <p class="signboard-note">
+        For buying an item cheap and reselling it higher — see whether a
+        flip is actually worth the time it takes to run, not just whether
+        it's profitable per trade.
+      </p>
+
+      <div class="field-grid">
+        <div class="field">
+          <label for="t-buy">Buy price per item (WL)</label>
+          <input type="number" id="t-buy" min="0" step="0.01" value="0.5">
+        </div>
+        <div class="field">
+          <label for="t-sell">Sell price per item (WL)</label>
+          <input type="number" id="t-sell" min="0" step="0.01" value="0.8">
+        </div>
+        <div class="field">
+          <label for="t-qty">Items per trade</label>
+          <input type="number" id="t-qty" min="0" step="1" value="200">
+        </div>
+        <div class="field">
+          <label for="t-time">Time per trade cycle (minutes)</label>
+          <span class="hint">Buying, listing and reselling</span>
+          <input type="number" id="t-time" min="1" step="1" value="20">
+        </div>
+      </div>
+
+      <div class="result-row">
+        <div class="result-tile">
+          <span class="value" id="t-out-per-trade">0</span>
+          <span class="label">Profit per trade cycle</span>
+        </div>
+        <div class="result-tile" id="t-out-per-hour-tile">
+          <span class="value" id="t-out-per-hour">0</span>
+          <span class="label">Profit per hour</span>
+        </div>
+        <div class="result-tile" id="t-out-margin-tile">
+          <span class="value" id="t-out-margin">0</span>
+          <span class="label">Margin per item</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <strong>Dirt &amp; Diamonds</strong><br>
+      A fan-made Growtopia toolkit.
+    </div>
+    <p class="disclaimer">
+      Not affiliated with or endorsed by Ubisoft or the Growtopia developers.
+      All figures come from what you type in — verify current prices in-game.
+    </p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>

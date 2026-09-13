@@ -1,0 +1,566 @@
+/* ==========================================================================
+   Dirt & Diamonds — Growtopia Profit Hub
+   Design tokens
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --sky-top: #bfe8f7;
+  --sky-bottom: #8ed2ea;
+  --dirt-dark: #33200f;
+  --dirt-mid: #55341f;
+  --dirt-light: #7a4f30;
+  --grass: #62a83b;
+  --grass-dark: #467a29;
+  --gold: #eeb524;
+  --gold-dark: #b9860f;
+  --cream: #f4eddb;
+  --paper: #fbf7ec;
+  --ink: #2a1e14;
+  --ink-soft: #5c4c3b;
+  --white: #fffdf8;
+  --danger: #b3462c;
+
+  --font-display: 'Press Start 2P', monospace;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+
+  --radius: 3px;
+  --border: 3px solid var(--ink);
+}
+
+* { box-sizing: border-box; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+img { max-width: 100%; display: block; }
+
+a {
+  color: var(--dirt-dark);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ---------- Blocky decorative bits ---------- */
+
+.block-icon {
+  width: 34px;
+  height: 34px;
+  flex: none;
+  background:
+    linear-gradient(var(--grass), var(--grass) 40%, var(--dirt-mid) 40%, var(--dirt-mid));
+  border: 2px solid var(--ink);
+  position: relative;
+  image-rendering: pixelated;
+}
+.block-icon::after {
+  content: "";
+  position: absolute;
+  top: 3px; left: 3px; right: 3px; height: 6px;
+  background: rgba(255,255,255,0.35);
+}
+
+.block-divider {
+  height: 18px;
+  width: 100%;
+  background-image:
+    repeating-linear-gradient(90deg,
+      var(--dirt-dark) 0 18px,
+      var(--dirt-mid) 18px 36px);
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+}
+
+/* ---------- Header / nav ---------- */
+
+.site-header {
+  background: var(--dirt-dark);
+  border-bottom: 4px solid var(--ink);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  line-height: 1.5;
+  color: var(--white);
+}
+
+.brand-name span {
+  display: block;
+  font-size: 0.62rem;
+  color: var(--gold);
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  display: inline-block;
+  padding: 8px 14px;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+}
+
+.main-nav a:hover,
+.main-nav a[aria-current="page"] {
+  border-color: var(--gold);
+  background: rgba(238,181,36,0.12);
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background: linear-gradient(180deg, var(--sky-top), var(--sky-bottom));
+  padding: 72px 0 56px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .wrap {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  text-align: left;
+}
+
+.hero-tag {
+  display: inline-block;
+  background: var(--white);
+  border: var(--border);
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--radius);
+  box-shadow: 3px 3px 0 var(--ink);
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.5;
+  margin: 0 0 20px;
+  color: var(--ink);
+  text-shadow: 2px 2px 0 rgba(255,255,255,0.5);
+}
+
+.hero p.lead {
+  font-size: 1.15rem;
+  max-width: 52ch;
+  color: var(--ink-soft);
+  margin: 0 0 30px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cloud {
+  position: absolute;
+  background: var(--white);
+  border: 3px solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.08);
+}
+.cloud::before, .cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border: inherit;
+}
+.c1 { width: 90px; height: 34px; top: 12%; right: 8%; }
+.c1::before { width: 46px; height: 46px; top: -30px; left: 10px; }
+.c2 { width: 60px; height: 24px; top: 32%; right: 22%; opacity: 0.85;}
+.c2::before { width: 30px; height: 30px; top: -20px; left: 6px; }
+.c3 { width: 70px; height: 26px; top: 6%; right: 32%; opacity: 0.7; }
+.c3::before { width: 34px; height: 34px; top: -22px; left: 8px; }
+
+@media (max-width: 720px) {
+  .cloud { display: none; }
+}
+
+/* ---------- Buttons ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 22px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  text-decoration: none;
+  border: var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.btn:active {
+  transform: translate(0, 0);
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+.btn-primary {
+  background: var(--grass);
+  color: var(--ink);
+}
+.btn-secondary {
+  background: var(--white);
+  color: var(--ink);
+}
+.btn-gold {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+/* ---------- Sections on dirt background ---------- */
+
+.section {
+  padding: 56px 0;
+}
+
+.section-dirt {
+  background: var(--dirt-mid);
+  color: var(--white);
+  background-image:
+    radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.section-dirt h2, .section-dirt .eyebrow-free-title { color: var(--white); }
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.4vw, 1.5rem);
+  line-height: 1.6;
+  margin: 0 0 12px;
+}
+
+.section .section-intro {
+  max-width: 62ch;
+  margin: 0 0 32px;
+  color: var(--ink-soft);
+}
+.section-dirt .section-intro { color: #e6dcc8; }
+
+/* ---------- Inventory-slot cards ---------- */
+
+.slot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.slot-card {
+  background: var(--paper);
+  color: var(--ink);
+  border: var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.slot-card h3 {
+  margin: 0;
+  font-size: 1.08rem;
+}
+
+.slot-card p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.slot-card .slot-icon {
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+}
+
+.icon-farm { background: var(--grass); }
+.icon-trade { background: var(--gold); }
+.icon-gem { background: #6fb7d6; }
+.icon-lock { background: var(--dirt-light); }
+
+/* ---------- Quest-log style list (home preview) ---------- */
+
+.quest-log {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.quest-log li {
+  background: rgba(255,255,255,0.06);
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.quest-log .num {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--gold);
+  flex: none;
+  padding-top: 2px;
+}
+
+/* ---------- Signboard panels (calculators) ---------- */
+
+.signboard {
+  background: var(--paper);
+  border: var(--border);
+  border-radius: var(--radius);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.25);
+  padding: 28px;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.signboard::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 24px;
+  width: 16px;
+  height: 16px;
+  background: var(--dirt-light);
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+}
+
+.signboard h2 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0 0 6px;
+  line-height: 1.6;
+}
+
+.signboard .signboard-note {
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  margin: 0 0 22px;
+  max-width: 62ch;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.field .hint {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  font-weight: 400;
+}
+
+.field input,
+.field select {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--ink);
+}
+
+.result-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.result-tile {
+  background: var(--dirt-dark);
+  color: var(--white);
+  border-radius: var(--radius);
+  padding: 16px;
+  border: 2px solid var(--ink);
+}
+
+.result-tile .value {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 6px;
+  word-break: break-word;
+}
+
+.result-tile .label {
+  font-size: 0.82rem;
+  color: #e6dcc8;
+}
+
+.result-tile.warn .value { color: var(--danger); }
+
+/* ---------- Article page (profit methods) ---------- */
+
+.method {
+  border: var(--border);
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: 26px 28px;
+  margin-bottom: 26px;
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.2);
+}
+
+.method h2 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  margin: 0 0 14px;
+  line-height: 1.6;
+}
+
+.stat-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.stat-tag {
+  border: 2px solid var(--ink);
+  border-radius: var(--radius);
+  padding: 5px 10px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: var(--cream);
+}
+
+.stat-tag.low { background: #d9edc9; }
+.stat-tag.medium { background: #f6e3ad; }
+.stat-tag.high { background: #f0c4b6; }
+
+.method ul.tips {
+  margin: 0;
+  padding-left: 20px;
+}
+.method ul.tips li { margin-bottom: 8px; }
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: var(--dirt-dark);
+  color: #e6dcc8;
+  border-top: 4px solid var(--ink);
+  padding: 36px 0;
+  font-size: 0.9rem;
+}
+
+.site-footer .wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.site-footer a { color: var(--gold); }
+
+.disclaimer {
+  max-width: 62ch;
+  color: #b9ab93;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 640px) {
+  .site-header .wrap { flex-direction: column; align-items: flex-start; }
+  .main-nav ul { flex-wrap: wrap; }
+  .hero { padding: 48px 0 40px; }
+  .site-footer .wrap { flex-direction: column; }
+}
